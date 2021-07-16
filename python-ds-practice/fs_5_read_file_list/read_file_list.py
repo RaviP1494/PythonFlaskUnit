@@ -24,3 +24,4 @@ def read_file_list(filename):
     names = data.splitlines()
     for name in names:
         print('- ' + name)
+    f.close()
