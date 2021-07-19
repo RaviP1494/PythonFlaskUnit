@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %} Answers {% endblock %}
+
+{% block body %}
+
+<h1>Thank you!</h1>
+<h4>Here are the answers you've provided:</h4>
+{% for answer in answers %}
+<div>
+    <span>
+        {{answer}}
+    </span>
+</div>
+{% endfor%}
+<form action='/'>
+    <button>Back to home</button>
+</form>
+
+{% endblock %}

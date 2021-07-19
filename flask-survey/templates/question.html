@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %} Question {{id+1}} {% endblock %}
+
+{% block body %}
+{% with quest = survey.questions[id] %}
+<h1>Question {{id+1}}</h1>
+<br>
+<form action='/questions/{{id}}' method='POST'>
+    <div>{{quest.question}}</div>
+    {% for ans in quest.choices %}
+    <br>
+    <input name='ans' type='radio' value='{{ans}}' required>
+    <label>{{ans}}</label>
+    {% endfor %}
+    <br>
+    <button>Submit</button>
+</form>
+{% endwith %}
+{% endblock %}

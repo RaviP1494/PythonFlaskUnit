@@ -1,10 +1,11 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect, flash
 from flask_debugtoolbar import DebugToolbarExtension
 from random import randint
 
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = "thisisthekey"
+#app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 debug = DebugToolbarExtension(app)
 
 
@@ -125,3 +126,23 @@ def child_temp():
     """Demo of template inheritance, child template"""
 
     return render_template('child.html')
+
+
+@app.route('/funform')
+def funform_view():
+    """Returns simple name submission form"""
+
+    return render_template('funform.html')
+
+
+name = 'ravi'
+@app.route('/funform', methods=["POST"])
+def funform_post():
+    """Saves name to global variable"""
+    name = request.form.get("name",default="kiran")
+    return redirect('/funformdone')
+
+
+@app.route('/funformdone')
+def funformdone_view():
+    return name
