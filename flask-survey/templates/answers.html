@@ -6,10 +6,10 @@
 
 <h1>Thank you!</h1>
 <h4>Here are the answers you've provided:</h4>
-{% for answer in answers %}
+{% for response in session['responses'] %}
 <div>
     <span>
-        {{answer}}
+        {{response}}
     </span>
 </div>
 {% endfor%}
